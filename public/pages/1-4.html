@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>三角形の描画:　Canvas 2D Context</title>
+        <style>
+          *{
+              padding: 0px;
+              margin: 0px;
+          }
+          #frame{
+              width: 500px;
+              height: 500px;
+              background-color: black;
+          }
+        </style>
+        <script>
+          window.addEventListener('load', function(){
+              drawStart()
+          })
+        
+          function drawStart(){
+            /**
+            * @type {HTMLCanvasElement}
+            */
+            const canvas = document.getElementById('frame')
+            canvas.width = canvas.clientWidth
+            canvas.height = canvas.clientHeight
+            const context = canvas.getContext('2d')
+
+            context.beginPath()
+            context.moveTo(250, 50)
+            context.lineTo(50, 450)
+            context.lineTo(450, 450)
+            context.closePath()
+
+            context.strokeStyle = '#FF0000'
+            context.lineWidth = 10
+            context.stroke()
+
+            context.fillStyle = 'blue'
+            context.fill()
+          }
+        </script>
+    </head>
+    <body>
+      <canvas id="frame"></canvas>
+    </body>
+    <script>
+      window.addEventListener("keydown", function(e){
+        let keyChar = String.fromCharCode(e.keyCode).toLowerCase()
+        if(keyChar=="s"){
+          let canvas = document.getElementById('frame')
+          const a = document.createElement("a")
+          a.href = canvas.toDataURL("image/png") //fileFormat
+          a.download = "picture"  //fileName
+          a.innerHTML = "ダウンロード"
+          document.getElementsByTagName("body")[0].appendChild(a)
+        }
+      })
+    </script>
+</html>
