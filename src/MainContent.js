@@ -41,7 +41,7 @@ class MainContent extends React.Component {
         canvas.innerHTML = ''
         canvas.appendChild(document.createElement('p')).innerHTML= e
       }
-    }, 300)
+    }, 500)
   }
 
   render(){
