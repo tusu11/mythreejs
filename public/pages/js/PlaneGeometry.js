@@ -10,7 +10,7 @@
         draw()
       }
 
-      let renderer, scene, canvasFrame
+      var renderer, scene, canvasFrame
       function initThree(){
         canvasFrame = document.getElementById('canvas-frame')
         //renderer = new THREE.WebGLRenderer()
@@ -22,7 +22,7 @@
         scene = new THREE.Scene()
       }
 
-      let camera
+      var camera
       function initCamera(){
         camera = new THREE.PerspectiveCamera(45, canvasFrame.clientWidth/canvasFrame.clientHeight, 1, 1000)
         camera.position.set(50, 50, 100)
@@ -30,9 +30,9 @@
         camera.lookAt(0, 0, 0)
       }
 
-      let axis
-      let grid
-      let plane
+      var axis
+      var grid
+      var plane
       function initObject(){
         axis = new THREE.AxesHelper(50)
         scene.add(axis)
@@ -41,8 +41,8 @@
         grid.rotation.set(Math.PI/2, 0, 0)
         scene.add(grid)
 
-        let geometry = new THREE.PlaneGeometry(100, 100, 10, 10)
-        let material = new THREE.MeshBasicMaterial({color: Math.random()*0xFFFFFF, wireframe: true})
+        var geometry = new THREE.PlaneGeometry(100, 100, 10, 10)
+        var material = new THREE.MeshBasicMaterial({color: Math.random()*0xFFFFFF, wireframe: true})
         plane = new THREE.Mesh(geometry, material)
         scene.add(plane)
       }

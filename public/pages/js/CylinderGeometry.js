@@ -10,7 +10,7 @@
         draw()
       }
 
-      let renderer, scene, canvasFrame
+      var renderer, scene, canvasFrame
       function initThree(){
         canvasFrame = document.getElementById('canvas-frame')
         //renderer = new THREE.WebGLRenderer()
@@ -23,7 +23,7 @@
         
       }
 
-      let camera
+      var camera
       function initCamera(){
         camera = new THREE.PerspectiveCamera(45, canvasFrame.clientWidth/canvasFrame.clientHeight, 1, 1000)
         camera.position.set(100, 100, 200)
@@ -31,9 +31,9 @@
         camera.lookAt(0, 0, 0)
       }
 
-      let axis
-      let grid
-      let cylinder
+      var axis
+      var grid
+      var cylinder
       function initObject(){
         axis = new THREE.AxesHelper(50)
         scene.add(axis)
@@ -42,11 +42,11 @@
         grid.rotation.set(Math.PI/2, 0, 0)
         scene.add(grid)
 
-        let geometry = new THREE.CylinderGeometry(0, 40, 80, 10, 10, true, 0 ,Math.PI/3*4)
-        let material = new THREE.MeshNormalMaterial({side: THREE.DoubleSide, wireframe: false})
+        var geometry = new THREE.CylinderGeometry(0, 40, 80, 10, 10, true, 0 ,Math.PI/3*4)
+        var material = new THREE.MeshNormalMaterial({side: THREE.DoubleSide, wireframe: false})
         cylinder = new THREE.Mesh(geometry, material)
         //フラットシェーディング
-        for(let i=0; i<geometry.faces.length; i++){
+        for(var i=0; i<geometry.faces.length; i++){
           geometry.faces[i].vertexNormals[0].copy(geometry.faces[i].normal)
           geometry.faces[i].vertexNormals[1].copy(geometry.faces[i].normal)
           geometry.faces[i].vertexNormals[2].copy(geometry.faces[i].normal)

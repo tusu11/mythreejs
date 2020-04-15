@@ -1,6 +1,6 @@
 
       window.addEventListener("load", function(){
-        const color = new THREE.Color("purple")
+        var color = new THREE.Color("purple")
         threeStart(new THREE.MeshBasicMaterial({color: color}))
         threeStart(new THREE.MeshDepthMaterial({wireframe: true}))
       })
@@ -12,7 +12,7 @@
         draw()
       }
 
-      let renderer, scene, canvasFrame
+      var renderer, scene, canvasFrame
       function initThree(){
         canvasFrame = document.getElementById('canvas-frame')
         //renderer = new THREE.WebGLRenderer()
@@ -25,7 +25,7 @@
         
       }
 
-      let camera
+      var camera
       function initCamera(){
         camera = new THREE.PerspectiveCamera(45, canvasFrame.clientWidth/canvasFrame.clientHeight, 1, 1000)
         camera.position.set( 50, 50, 100)
@@ -33,9 +33,9 @@
         camera.lookAt(0, 0, 0)
       }
 
-      let axis
-      let grid
-      let ring
+      var axis
+      var grid
+      var ring
       function initObject(mtr){
         axis = new THREE.AxesHelper(50)
         scene.add(axis)
@@ -44,10 +44,10 @@
         grid.rotation.set(Math.PI/2, 0, 0)
         scene.add(grid)
 
-        const geometry = new THREE.TeapotBufferGeometry(50, 10, true, true, true, true, false)
-        //const material = new THREE.MeshNormalMaterial({opacity: 0.5, transparent: true,side: THREE.DoubleSide, wireframe: false})
-        //const material = new THREE.MeshBasicMaterial({color: 0xff0000})
-        const material = mtr
+        var geometry = new THREE.TeapotBufferGeometry(50, 10, true, true, true, true, false)
+        //var material = new THREE.MeshNormalMaterial({opacity: 0.5, transparent: true,side: THREE.DoubleSide, wireframe: false})
+        //var material = new THREE.MeshBasicMaterial({color: 0xff0000})
+        var material = mtr
         ring = new THREE.Mesh(geometry, material)
         geometry.rotateX(Math.PI/2)
         scene.add(ring)
@@ -57,5 +57,3 @@ function draw(){
   //requestAnimationFrame(draw)
   renderer.render(scene, camera)
 }
-
-    

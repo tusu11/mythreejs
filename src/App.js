@@ -2,32 +2,14 @@ import React from 'react';
 //import ReactDOM from 'react-dom';
 import Sidebar from 'react-sidebar';
 //import List from './List'
-// import logo from './logo.svg';
 import './App.css';
 // import { Route, Link, Redirect } from 'react-router-dom';
-// import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet'
 import MainContent from './MainContent';
 import data from './content.json'
 
 
 const mql = window.matchMedia(`(min-width: 800px)`);
-
-// const TopPage = () => (
-//   <header className="App-header">
-//     <img src={logo} className="App-logo" alt="logo" />
-//     <p>
-//       Edit <code>src/App.js</code> and save to reload.
-//     </p>
-//     <a
-//       className="App-link"
-//       href="https://reactjs.org"
-//       target="_blank"
-//       rel="noopener noreferrer"
-//     >
-//       Learn Three.js
-//     </a>
-//   </header>
-// )
 
 const List = (props) => (
   <div>
@@ -50,7 +32,7 @@ class App extends React.Component {
     this.state = {
       sidebarDocked: mql.matches,
       sidebarOpen: true,
-      pageTitle: 'top'
+      pageTitle: 'mythree.js'
     };
     this.mediaQueryChanged = this.mediaQueryChanged.bind(this);
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
@@ -59,6 +41,16 @@ class App extends React.Component {
 
   componentDidMount() {
     mql.addListener(this.mediaQueryChanged);
+    console.log('call did m app')
+  }
+
+  componentDidUpdate() {
+    console.log('call did up app')
+    const listner = (event) => {
+      window.threeStart()
+      window.removeEventListener('load', listner)
+    }
+    window.addEventListener('load', listner)
   }
 
   componentWillUnmount() {

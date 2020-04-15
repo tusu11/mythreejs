@@ -10,7 +10,7 @@
         loop()
       }
 
-      let renderer, scene, canvasFrame
+      var renderer, scene, canvasFrame
       function initThree(){
         canvasFrame = document.getElementById('canvas-frame')
         //renderer = new THREE.WebGLRenderer()
@@ -23,7 +23,7 @@
         
       }
 
-      let camera
+      var camera
       function initCamera(){
         camera = new THREE.PerspectiveCamera(45, canvasFrame.clientWidth/canvasFrame.clientHeight, 1, 1000)
         camera.position.set( 50, 50, 100)
@@ -41,16 +41,16 @@
         trackball.minDistance = 40
       }
 
-      let axis
-      let triangle
+      var axis
+      var triangle
       function initObject(){
         axis = new THREE.AxesHelper(50)
         scene.add(axis)
         axis.position.set(0, 0, 0)
 
-        const geometry = new THREE.Geometry()
-        //const material = new THREE.MeshNormalMaterial({opacity: 0.5, transparent: true,side: THREE.DoubleSide, wireframe: false})
-        //const material = new THREE.MeshBasicMaterial({color: 0xff0000})
+        var geometry = new THREE.Geometry()
+        //var material = new THREE.MeshNormalMaterial({opacity: 0.5, transparent: true,side: THREE.DoubleSide, wireframe: false})
+        //var material = new THREE.MeshBasicMaterial({color: 0xff0000})
         geometry.vertices[0] = new THREE.Vector3(50, 0, 0)
         geometry.vertices[1] = new THREE.Vector3(0, 50, 0)
         geometry.vertices[2] = new THREE.Vector3(0, 15, 50)
@@ -63,13 +63,13 @@
         geometry.faces[1].vertexColors[0] = new THREE.Color(0xFF0000)
         geometry.faces[1].vertexColors[1] = new THREE.Color(0x0000FF)
         geometry.faces[1].vertexColors[2] = new THREE.Color(0x0000FF)
-        const material = new THREE.MeshBasicMaterial({color: 0xFFFFFF, side: THREE.DoubleSide, vertexColors: THREE.VertexColors})
+        var material = new THREE.MeshBasicMaterial({color: 0xFFFFFF, side: THREE.DoubleSide, vertexColors: THREE.VertexColors})
       triangle = new THREE.Mesh(geometry, material)
         // lines = new THREE.LineSegments(geometry, material)
         scene.add(triangle)
       }
 
-      let step = 0
+      var step = 0
       function loop(){
         step++
         trackball.update()

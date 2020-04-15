@@ -10,7 +10,7 @@
         draw()
       }
 
-      let renderer, scene, canvasFrame
+      var renderer, scene, canvasFrame
       function initThree(){
         canvasFrame = document.getElementById('canvas-frame')
         //renderer = new THREE.WebGLRenderer()
@@ -23,7 +23,7 @@
         
       }
 
-      let camera
+      var camera
       function initCamera(){
         camera = new THREE.PerspectiveCamera(45, canvasFrame.clientWidth/canvasFrame.clientHeight, 1, 1000)
         camera.position.set(100, 100, 200)
@@ -31,8 +31,8 @@
         camera.lookAt(0, 0, 0)
       }
 
-      let axis
-      let grid
+      var axis
+      var grid
       function initObject(){
         axis = new THREE.AxesHelper(50)
         scene.add(axis)
@@ -41,24 +41,24 @@
         grid.rotation.set(Math.PI/2, 0, 0)
         scene.add(grid)
 
-        const n = 8
-        const size = 50
-        let shape = new THREE.Shape()
+        var n = 8
+        var size = 50
+        var shape = new THREE.Shape()
         shape.moveTo(0, size)
-        for(let i=1; i<n; i++){
-          let theta = 2 * Math.PI / n * i
+        for(var i=1; i<n; i++){
+          var theta = 2 * Math.PI / n * i
           shape.lineTo(size*Math.sin(theta), size*Math.cos(theta))
         }
-        const holePath = new THREE.Path()
+        var holePath = new THREE.Path()
         holePath.absarc(20, 20, 15, 0, Math.PI*2, true)
         shape.holes.push(holePath)
-        const geometry = new THREE.ShapeGeometry(shape)
+        var geometry = new THREE.ShapeGeometry(shape)
         // geometry.rotateY(2*Math.PI/5)
         // geometry.rotateZ(2*Math.PI/5)
-        let material = new THREE.MeshNormalMaterial({side: THREE.DoubleSide, wireframe: false})
+        var material = new THREE.MeshNormalMaterial({side: THREE.DoubleSide, wireframe: false})
         shape = new THREE.Mesh(geometry, material)
         //フラットシェーディング
-        for(let i=0; i<geometry.faces.length; i++){
+        for(var i=0; i<geometry.faces.length; i++){
           geometry.faces[i].vertexNormals[0].copy(geometry.faces[i].normal)
           geometry.faces[i].vertexNormals[1].copy(geometry.faces[i].normal)
           geometry.faces[i].vertexNormals[2].copy(geometry.faces[i].normal)

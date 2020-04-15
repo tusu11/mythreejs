@@ -10,7 +10,7 @@
         draw()
       }
 
-      let renderer, scene, canvasFrame
+      var renderer, scene, canvasFrame
       function initThree(){
         canvasFrame = document.getElementById('canvas-frame')
         //renderer = new THREE.WebGLRenderer()
@@ -23,7 +23,7 @@
         
       }
 
-      let camera
+      var camera
       function initCamera(){
         camera = new THREE.PerspectiveCamera(45, canvasFrame.clientWidth/canvasFrame.clientHeight, 1, 1000)
         camera.position.set(10, 10, 20)
@@ -31,9 +31,9 @@
         camera.lookAt(0, 0, 0)
       }
 
-      let axis
-      let grid
-      let text
+      var axis
+      var grid
+      var text
       function initObject(){
         axis = new THREE.AxesHelper(50)
         scene.add(axis)
@@ -43,10 +43,10 @@
         scene.add(grid)
 
         
-        const fontPath = "./three.js-master/examples/fonts/gentilis_bold.typeface.json"
-        const loader = new THREE.FontLoader()
+        var fontPath = "./three.js-master/examples/fonts/gentilis_bold.typeface.json"
+        var loader = new THREE.FontLoader()
         loader.load(fontPath, function(font){
-          const parameters= {
+          var parameters= {
             font: font,
             size: 80,
             height: 5,
@@ -58,8 +58,8 @@
             bevelSegments: 5
           }
 
-          const geometry = new THREE.TextGeometry("tftfytfytythree.js", parameters)
-          const material = new THREE.MeshNormalMaterial()
+          var geometry = new THREE.TextGeometry("tftfytfytythree.js", parameters)
+          var material = new THREE.MeshNormalMaterial()
           text = new THREE.Mesh(geometry, material)
         
           scene.add(text)

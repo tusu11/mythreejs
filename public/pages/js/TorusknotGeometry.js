@@ -11,7 +11,7 @@
         draw()
       }
 
-      let renderer, scene, canvasFrame
+      var renderer, scene, canvasFrame
       function initThree(){
         canvasFrame = document.getElementById('canvas-frame')
         //renderer = new THREE.WebGLRenderer()
@@ -24,7 +24,7 @@
         
       }
 
-      let camera
+      var camera
       function initCamera(){
         camera = new THREE.PerspectiveCamera(45, canvasFrame.clientWidth/canvasFrame.clientHeight, 1, 1000)
         camera.position.set(100, 100, 200)
@@ -32,10 +32,10 @@
         camera.lookAt(0, 0, 0)
       }
 
-      let axis
-      let grid
-      let icosahedron
-      let p, q
+      var axis
+      var grid
+      var icosahedron
+      var p, q
       function initObject(){
         axis = new THREE.AxesHelper(50)
         scene.add(axis)
@@ -44,14 +44,14 @@
         grid.rotation.set(Math.PI/2, 0, 0)
         scene.add(grid)
 
-        let geometry = new THREE.ParametricGeometry(40, 5, 50, 50, p, q)
+        var geometry = new THREE.ParametricGeometry(40, 5, 50, 50, p, q)
         // geometry.rotateY(2*Math.PI/5)
         // geometry.rotateZ(2*Math.PI/5)
         geometry.computeVertexNormals
-        let material = new THREE.MeshNormalMaterial({side: THREE.DoubleSide, wireframe: false})
+        var material = new THREE.MeshNormalMaterial({side: THREE.DoubleSide, wireframe: false})
         icosahedron = new THREE.Mesh(geometry, material)
         //フラットシェーディング
-        for(let i=0; i<geometry.faces.length; i++){
+        for(var i=0; i<geometry.faces.length; i++){
           geometry.faces[i].vertexNormals[0].copy(geometry.faces[i].normal)
           geometry.faces[i].vertexNormals[1].copy(geometry.faces[i].normal)
           geometry.faces[i].vertexNormals[2].copy(geometry.faces[i].normal)
@@ -65,11 +65,11 @@
         renderer.render(scene, camera)
       }
 
-      let form
-      let inputP
-      let inputQ
+      var form
+      var inputP
+      var inputQ
       function addNode(){
-        const main = document.getElementById('main')
+        var main = document.getElementById('main')
         form = main.appendChild(document.createElement('form'))
         inputP = form.appendChild(document.createElement('input'))
         inputP.setAttribute('type', 'number')
@@ -89,7 +89,7 @@
 
       function setPQ(){
         [p, q] = [inputP.value, inputQ.value]
-        const canvas = document.getElementsByTagName('canvas')
+        var canvas = document.getElementsByTagName('canvas')
         canvasFrame.removeChild(canvas[0])
         threeStart()
       }

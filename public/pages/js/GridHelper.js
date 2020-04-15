@@ -10,7 +10,7 @@
         draw()
       }
 
-      let renderer, scene, canvasFrame
+      var renderer, scene, canvasFrame
       function initThree(){
         canvasFrame = document.getElementById('canvas-frame')
         renderer = new THREE.WebGLRenderer()
@@ -21,7 +21,7 @@
         scene = new THREE.Scene()
       }
 
-      let camera
+      var camera
       function initCamera(){
         camera = new THREE.PerspectiveCamera(45, canvasFrame.clientWidth/canvasFrame.clientHeight, 1, 1000)
         camera.position.set(50, 50, 100)
@@ -29,8 +29,8 @@
         camera.lookAt(0, 0, 0)
       }
 
-      let axis
-      let grid
+      var axis
+      var grid
       function initObject(){
         axis = new THREE.AxesHelper(50)
         scene.add(axis)

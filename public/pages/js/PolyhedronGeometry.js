@@ -10,7 +10,7 @@ function threeStart(){
   draw()
 }
 
-let renderer, scene, canvasFrame
+var renderer, scene, canvasFrame
 function initThree(){
   canvasFrame = document.getElementById('canvas-frame')
   //renderer = new THREE.WebGLRenderer()
@@ -23,7 +23,7 @@ function initThree(){
   
 }
 
-let camera
+var camera
 function initCamera(){
   camera = new THREE.PerspectiveCamera(45, canvasFrame.clientWidth/canvasFrame.clientHeight, 1, 1000)
   camera.position.set(100, 100, 200)
@@ -31,9 +31,9 @@ function initCamera(){
   camera.lookAt(0, 0, 0)
 }
 
-let axis
-let grid
-let lathe
+var axis
+var grid
+var lathe
 function initObject(){
   axis = new THREE.AxesHelper(50)
   scene.add(axis)
@@ -42,7 +42,7 @@ function initObject(){
   grid.rotation.set(Math.PI/2, 0, 0)
   scene.add(grid)
 
-  const points = [
+  var points = [
     new THREE.Vector2(0, -60),
     new THREE.Vector2(22, 15),
     new THREE.Vector2(30, 30),
@@ -51,12 +51,12 @@ function initObject(){
     
   ]
 
-  let geometry = new THREE.LatheGeometry(points, 50, Math.PI/3, Math.PI*5/3)
+  var geometry = new THREE.LatheGeometry(points, 50, Math.PI/3, Math.PI*5/3)
   geometry.computeVertexNormals
-  let material = new THREE.MeshNormalMaterial({side: THREE.DoubleSide, wireframe: false})
+  var material = new THREE.MeshNormalMaterial({side: THREE.DoubleSide, wireframe: false})
   lathe = new THREE.Mesh(geometry, material)
   //フラットシェーディング
-  for(let i=0; i<geometry.faces.length; i++){
+  for(var i=0; i<geometry.faces.length; i++){
     geometry.faces[i].vertexNormals[0].copy(geometry.faces[i].normal)
     geometry.faces[i].vertexNormals[1].copy(geometry.faces[i].normal)
     geometry.faces[i].vertexNormals[2].copy(geometry.faces[i].normal)

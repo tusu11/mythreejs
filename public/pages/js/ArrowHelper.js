@@ -1,6 +1,6 @@
-      // window.addEventListener("keydown", function(){
-      //   threeStart()
-      // })
+      window.addEventListener("load", function(){
+        threeStart()
+      })
 
       function threeStart(){
         initThree()

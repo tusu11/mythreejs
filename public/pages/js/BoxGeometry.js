@@ -1,6 +1,6 @@
-      // window.addEventListener("keydown", function(){
-      //   threeStart()
-      // })
+      window.onload = (event) => {
+        threeStart()
+      }
 
       function threeStart(){
         initThree()

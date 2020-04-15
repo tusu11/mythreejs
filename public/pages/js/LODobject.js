@@ -10,7 +10,7 @@
         loop()
       }
 
-      let renderer, scene, canvasFrame
+      var renderer, scene, canvasFrame
       function initThree(){
         canvasFrame = document.getElementById('canvas-frame')
         //renderer = new THREE.WebGLRenderer()
@@ -23,7 +23,7 @@
         
       }
 
-      let camera
+      var camera
       function initCamera(){
         camera = new THREE.PerspectiveCamera(45, canvasFrame.clientWidth/canvasFrame.clientHeight, 1, 1000)
         camera.position.set( 50, 50, 100)
@@ -41,29 +41,29 @@
         trackball.minDistance = 40
       }
 
-      let axis
-      let lod
+      var axis
+      var lod
       function initObject(){
         axis = new THREE.AxesHelper(50)
         scene.add(axis)
         axis.position.set(0, 0, 0)
-        const geometry = [
+        var geometry = [
         [new THREE.IcosahedronGeometry(30, 4), 60],
         [new THREE.IcosahedronGeometry(30, 3), 90],
         [new THREE.IcosahedronGeometry(30, 2), 120],
         [new THREE.IcosahedronGeometry(30, 1), 150],
         [new THREE.IcosahedronGeometry(30, 0), 180]
         ]
-        const material = new THREE.MeshNormalMaterial({wireframe: true})
+        var material = new THREE.MeshNormalMaterial({wireframe: true})
         lod = new THREE.LOD()
-        for(let i=0; i<geometry.length; i++){
-          let mesh = new THREE.Mesh(geometry[i][0], material)
+        for(var i=0; i<geometry.length; i++){
+          var mesh = new THREE.Mesh(geometry[i][0], material)
           lod.addLevel(mesh, geometry[i][1])
         }
         scene.add(lod)
       }
 
-      let step = 0
+      var step = 0
       function loop(){
         step++
         trackball.update()
