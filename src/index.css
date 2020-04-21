@@ -50,15 +50,15 @@ ul {
   padding-left: 0px;
 }
 
-.sidebar span {
+.sidebar a {
   color: #bbb;
-  cursor: pointer;
+  text-decoration: none;
 }
 
-.sidebar span:hover {
+.sidebar a:hover {
   color: #049EFD;
 }
-.sidebar span:active {
+.sidebar a:active {
   text-decoration: underline
 }
 

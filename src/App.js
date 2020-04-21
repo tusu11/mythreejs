@@ -3,7 +3,7 @@ import React from 'react';
 import Sidebar from 'react-sidebar';
 //import List from './List'
 import './App.css';
-// import { Route, Link, Redirect } from 'react-router-dom';
+import { Route, Link, Redirect, Router, BrowserRouter } from 'react-router-dom';
 import { Helmet } from 'react-helmet'
 import MainContent from './MainContent';
 import data from './content.json'
@@ -19,8 +19,13 @@ const List = (props) => (
       </h1>
     </header>
     <ul>
-      {data.map(q => (
+      {/* {data.map(q => (
       <li key={q.title}><span onClick={()=>(props.func(q.title))}>{q.title}</span></li>
+      ))} */}
+      {data.map(q => (
+        <li key={q.title}>
+          <Link to={`/${q.title}`} onClick={()=>(props.func(q.title))}>{q.title}</Link>
+        </li>
       ))}
     </ul>
   </div>
@@ -66,23 +71,27 @@ class App extends React.Component {
   }
 
   handleContentChanged(e) {
-    this.setState({pageTitle: e.charAt(0).toUpperCase() + e.slice(1)})  //頭文字を大文字に
+    this.setState(() => {return {pageTitle: e.charAt(0).toUpperCase() + e.slice(1)}})  //頭文字を大文字に
+    console.log(this.state.pageTitle)
   }
 
   render() {
     return (
-      <div className="App">
-        <Sidebar
-          sidebar={<List func={this.handleContentChanged}/>}
-          open={this.state.sidebarOpen}
-          docked={this.state.sidebarDocked}
-          onSetOpen={this.onSetSidebarOpen}
-          sidebarClassName="sidebar"
-        >
-          {/*<Link  to="/test">gfdg</Link>*/}
-          <MainContent title={this.state.pageTitle} />
-        </Sidebar>
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <Sidebar
+            sidebar={<List func={this.handleContentChanged}/>}
+            open={this.state.sidebarOpen}
+            docked={this.state.sidebarDocked}
+            onSetOpen={this.onSetSidebarOpen}
+            sidebarClassName="sidebar"
+          >
+            {/* <MainContent title={this.state.pageTitle} /> */}
+            {/* <Route exact path='/' render={props => <MainContent title={"mythree.js"} />} /> */}
+            <Route path='/:title' render={props => <MainContent title={props.match.url.slice(1,)} />} />
+          </Sidebar>
+        </div>
+      </BrowserRouter>
     );
   }
 }
