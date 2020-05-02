@@ -3,8 +3,8 @@ import React from 'react';
 import Sidebar from 'react-sidebar';
 //import List from './List'
 import './App.css';
-import { Route, Link, Redirect, Router, BrowserRouter } from 'react-router-dom';
-import { Helmet } from 'react-helmet'
+import { Route, Link, BrowserRouter } from 'react-router-dom';
+// import { Helmet } from 'react-helmet'
 import MainContent from './MainContent';
 import data from './content.json'
 
