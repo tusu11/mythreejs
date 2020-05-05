@@ -2,7 +2,7 @@
 window.addEventListener("load", function(){
   threeStart()
 })
-
+cd
 function threeStart(){
   initThree()
   initCamera()
